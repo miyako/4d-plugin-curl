@@ -43,12 +43,10 @@ error|ARRAY LONGINT|Error code (out)
 
 **Note**: The following options are not support with cURL ARRAY:
 
-```c
-CURLOPT_WRITEDATA
-CURLOPT_READDATA
-CURLOPT_HTTPPOST_FILE
-CURLOPT_HTTPPOST
-```
+* ``CURLOPT_WRITEDATA``
+* ``CURLOPT_READDATA``
+* ``CURLOPT_HTTPPOST_FILE``
+* ``CURLOPT_HTTPPOST``
 
 ```
 escaped:=cURL Escape url (url)
@@ -86,81 +84,6 @@ path:=cURL Get executable
 Parameter|Type|Description
 ------------|------------|----
 path|TEXT|Path to command line program inside the plugin
-
-### Compatibility break
-
-The 4-array based multipart form data API has been dropped. It has been replaced by a more simple, option-based API. A new constant ``CURLOPT_HTTPPOST_FILE`` has been added, and the behaviour of existing constant ``CURLOPT_HTTPPOST`` has been modified.
-
-```
-CURLOPT_HTTPPOST (24)
-CURLOPT_HTTPPOST_FILE (30)
-```
-
-* Old way of performing ``multipart/form-data`` post
-
-```
-C_BLOB($in;$out)
-C_LONGINT($err)
-
-ARRAY LONGINT($optionNames;0)
-ARRAY TEXT($optionValues;0)
-
-APPEND TO ARRAY($optionNames;CURLOPT_HTTPPOST)
-APPEND TO ARRAY($optionValues;"1")
-
-ARRAY TEXT($names;2)
-ARRAY TEXT($types;2)
-ARRAY TEXT($fileNames;2)
-ARRAY PICTURE($contents;2)  //substitute for ARRAY BLOB (pre-v14 technique)
-
-  //attributes
-C_OBJECT($attributes;$parent)
-OB SET($parent;"id";"0") 
-OB SET($attributes;"name";"tiger.jpeg";"parent";$parent)
-CONVERT FROM TEXT(JSON Stringify($attributes);"utf-8";$contents1)
-BLOB TO PICTURE($contents1;$contents{1};"application/json")//must match the mime type (used internally to retrive the BLOB)
-
-  //file
-READ PICTURE FILE(Get 4D folder(Current resources folder)+"images.jpeg";$contents{2})
-
-  //form name
-$names{1}:="attributes"
-$names{2}:="file"
-
-  //form content type
-$types{1}:="application/json"
-$types{2}:="image/jpeg"
-
-  //form file name (not implemented)
-$fileNames{1}:=""
-$fileNames{2}:="tiger.jpeg"
-
-$err:=cURL ("http://localhost/test";$optionNames;$optionValues;$in;$out;$names;$types;$fileNames;$contents)
-```
-
-* Current way of performing ``multipart/form-data`` post
-
-```
-C_BLOB($in;$out)
-C_LONGINT($err)
-
-ARRAY LONGINT($optionNames;0)
-ARRAY TEXT($optionValues;0)
-
-  //attributes
-C_OBJECT($attributes;$parent)
-OB SET($parent;"id";"0") 
-OB SET($attributes;"name";"tigers.jpeg";"parent";$parent)
-
-APPEND TO ARRAY($optionNames;CURLOPT_HTTPPOST)
-APPEND TO ARRAY($optionValues;"attributes;application/json;"+JSON Stringify($attributes))
-
-  //file
-APPEND TO ARRAY($optionNames;CURLOPT_HTTPPOST_FILE)
-APPEND TO ARRAY($optionValues;"file;image/jpeg;"+Convert path system to POSIX(Get 4D folder(Current resources folder)+"images.jpeg"))
-
-$err:=cURL ("http://localhost/test";$optionNames;$optionValues;$in;$out)
-```
 
 ### Changes
 
