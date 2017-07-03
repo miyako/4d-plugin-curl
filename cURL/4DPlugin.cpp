@@ -652,6 +652,167 @@ void json_set_number(JSONNODE *n, const wchar_t *name, json_int_t value)
 	}
 }
 
+void getInfo(CURL *curl, C_TEXT &json)
+{
+	long responseCode, connectCode, fileTime, redirectCount, headerSize, requestSize, lastSocket;
+	long sslVerifyResult, localPort, primaryPort, numConnects, osErrNo, httpAuthAvail, proxyAuthAvail;
+	double totalTime, nameLookupTime, connectTime, appConnectTime, preTransferTime, startTransferTime, redirectTime;
+	double sizeUpload, speedUpload, sizeDownload, speedDownload, contentLengthDownload, contentLengthUpload;
+	long rtspClientCseq, rtspServerCseq, rtspCseqRecv, conditionUnmet;
+	char *effectiveUrl = NULL;
+	char *redirectUrl = NULL;
+	char *contentType = NULL;
+	char *ftpEntryPath = NULL;
+	char *localIp = NULL;
+	char *primaryIp = NULL;
+	char *rtspSessionId = NULL;
+	
+	JSONNODE *info = json_new(JSON_NODE);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_CONDITION_UNMET, &conditionUnmet))
+		json_set_number(info, L"conditionUnmet", conditionUnmet);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_UPLOAD, &contentLengthUpload))
+		json_set_number(info, L"contentLengthUpload", contentLengthUpload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_RTSP_CLIENT_CSEQ, &rtspClientCseq))
+		json_set_number(info, L"rtspClientCseq", rtspClientCseq);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_RTSP_SERVER_CSEQ, &rtspServerCseq))
+		json_set_number(info, L"rtspServerCseq", rtspServerCseq);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_RTSP_CSEQ_RECV, &rtspCseqRecv))
+		json_set_number(info, L"rtspCseqRecv", rtspCseqRecv);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_LASTSOCKET, &lastSocket))
+		json_set_number(info, L"lastSocket", lastSocket);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_PRIMARY_PORT, &primaryPort))
+		json_set_number(info, L"primaryPort", primaryPort);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_LOCAL_PORT, &localPort))
+		json_set_number(info, L"localPort", localPort);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD, &contentLengthDownload))
+		json_set_number(info, L"contentLengthDownload", contentLengthDownload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_HTTP_CONNECTCODE, &connectCode))
+		json_set_number(info, L"connectCode", connectCode);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_FILETIME, &fileTime))
+		json_set_number(info, L"fileTime", fileTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_TOTAL_TIME, &totalTime))
+		json_set_number(info, L"totalTime", totalTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_REQUEST_SIZE , &requestSize))
+		json_set_number(info, L"requestSize", requestSize);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_HEADER_SIZE, &headerSize))
+		json_set_number(info, L"headerSize", headerSize);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_SPEED_UPLOAD, &speedUpload))
+		json_set_number(info, L"speedUpload", speedUpload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_SPEED_DOWNLOAD, &speedDownload))
+		json_set_number(info, L"speedDownload", speedDownload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_SIZE_DOWNLOAD, &sizeDownload))
+		json_set_number(info, L"sizeDownload", sizeDownload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_SIZE_UPLOAD, &sizeUpload))
+		json_set_number(info, L"sizeUpload", sizeUpload);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_HTTPAUTH_AVAIL, &httpAuthAvail))
+		json_set_number(info, L"httpAuthAvail", httpAuthAvail);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_PROXYAUTH_AVAIL, &proxyAuthAvail))
+		json_set_number(info, L"proxyAuthAvail", proxyAuthAvail);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_OS_ERRNO, &osErrNo))
+		json_set_number(info, L"osErrNo", osErrNo);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_NUM_CONNECTS, &numConnects))
+		json_set_number(info, L"numConnects", numConnects);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &responseCode))
+		json_set_number(info, L"responseCode", responseCode);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_NAMELOOKUP_TIME, &nameLookupTime))
+		json_set_number(info, L"nameLookupTime", nameLookupTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_CONNECT_TIME, &connectTime))
+		json_set_number(info, L"connectTime", connectTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_APPCONNECT_TIME, &appConnectTime))
+		json_set_number(info, L"appConnectTime", appConnectTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_PRETRANSFER_TIME, &preTransferTime))
+		json_set_number(info, L"preTransferTime", preTransferTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_STARTTRANSFER_TIME, &startTransferTime))
+		json_set_number(info, L"startTransferTime", startTransferTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_REDIRECT_TIME, &redirectTime))
+		json_set_number(info, L"redirectTime", redirectTime);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_SSL_VERIFYRESULT , &sslVerifyResult))
+		json_set_number(info, L"sslVerifyResult", sslVerifyResult);
+	
+	if(CURLE_OK == curl_easy_getinfo(curl, CURLINFO_REDIRECT_COUNT, &redirectCount))
+		json_set_number(info, L"redirectCount", redirectCount);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_EFFECTIVE_URL, &effectiveUrl)))
+		json_set_text(info, L"effectiveUrl", effectiveUrl);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_LOCAL_IP, &localIp)))
+		json_set_text(info, L"localIp", localIp);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_CONTENT_TYPE, &contentType)))
+		json_set_text(info, L"contentType", contentType);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_PRIMARY_IP, &primaryIp)))
+		json_set_text(info, L"primaryIp", primaryIp);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_REDIRECT_URL, &redirectUrl)))
+		json_set_text(info, L"redirectUrl", redirectUrl);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_FTP_ENTRY_PATH, &ftpEntryPath)))
+		json_set_text(info, L"ftpEntryPath", ftpEntryPath);
+	
+	if((CURLE_OK == curl_easy_getinfo(curl, CURLINFO_RTSP_SESSION_ID, &rtspSessionId)))
+		json_set_text(info, L"rtspSessionId", rtspSessionId);
+	
+	/*
+	 CURLINFO_SSL_ENGINES
+	 CURLINFO_COOKIELIST
+	 CURLINFO_CERTINFO
+	 CURLINFO_TLS_SESSION
+	 CURLINFO_PRIVATE
+	 */
+	
+	json_char *json_string = json_write_formatted(info);
+	std::wstring wstr = std::wstring(json_string);
+	
+#if VERSIONWIN
+	json.setUTF16String((const PA_Unichar *)wstr.c_str(), (uint32_t)wstr.length());
+#else
+	uint32_t dataSize = (wstr.length() * sizeof(wchar_t))+ sizeof(PA_Unichar);
+	std::vector<char> buf(dataSize);
+	
+	uint32_t len = PA_ConvertCharsetToCharset((char *)wstr.c_str(),
+																						wstr.length() * sizeof(wchar_t),
+																						eVTC_UTF_32,
+																						(char *)&buf[0],
+																						dataSize,
+																						eVTC_UTF_16);
+	
+	json.setUTF16String((const PA_Unichar *)&buf[0], len);
+#endif
+	
+	json_delete(info);
+}
+
 void getInfo(CURL *curl, ARRAY_TEXT &json)
 {
 	long responseCode, connectCode, fileTime, redirectCount, headerSize, requestSize, lastSocket;
@@ -1614,7 +1775,7 @@ void _cURL(PA_PluginParameters params, bool multi)
 			error = curl_easy_perform_with_yield(curl, _PA_YieldAbsolute);
 			returnValue.setIntValue(error);
 			
-			getInfo(curl, Param6Infos);
+			getInfo(curl, Param6Info);
 			
 		}else
 		{
