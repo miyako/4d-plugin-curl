@@ -11,18 +11,6 @@
 
 <img src="https://cloud.githubusercontent.com/assets/1725068/18940649/21945000-8645-11e6-86ed-4a0f800e5a73.png" width="32" height="32" /> <img src="https://cloud.githubusercontent.com/assets/1725068/18940648/2192ddba-8645-11e6-864d-6d5692d55717.png" width="32" height="32" />
 
-
-A new array based function has been added to process multiple URLs.
-
-**Note**: The following options are not support with cURL ARRAY:
-
-```c
-CURLOPT_WRITEDATA
-CURLOPT_READDATA
-CURLOPT_HTTPPOST_FILE
-CURLOPT_HTTPPOST
-```
-
 ## Syntax
 
 ```
@@ -52,6 +40,15 @@ in|ARRAY BLOB|Request data (in)
 out|ARRAY BLOB|Response data (out)
 info|ARRAY TEXT|Information in JSON (out)
 error|ARRAY LONGINT|Error code (out)
+
+**Note**: The following options are not support with cURL ARRAY:
+
+```c
+CURLOPT_WRITEDATA
+CURLOPT_READDATA
+CURLOPT_HTTPPOST_FILE
+CURLOPT_HTTPPOST
+```
 
 ```
 escaped:=cURL Escape url (url)
