@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+    <assemblyIdentity type="win32"
+      name="com.4D.4DPlugin.miyako.cURL"
+version="6.0.0.0"
+processorArchitecture="IA64"/>
+    <file name="libcurl.dll"/>
+    <file name="libiconv-2.dll"/>
+    <file name="libidn-11.dll"/>
+    <file name="msvcr100.dll"/>
+    <file name="zlib1.dll"/>
+</assembly>
