@@ -297,41 +297,6 @@ $message:=BLOB to text($2;Mac text without length)
 MESSAGE($infoType+": "+$message)
 ```
 
-### FTP commands
-```
-C_BLOB($in;$out)
-C_LONGINT($err)
-ARRAY LONGINT($tNomOption;0)
-ARRAY TEXT($tValOption;0)
-APPEND TO ARRAY($tNomOption;CURLOPT_QUOTE)
-APPEND TO ARRAY($tValOption;"DELE public_html/client/printpoint.me/productimages/nav_bkgnd_gray.png")
-
-```
-
-Version
----
-* v14 is for v14 and above, Windows & OS X 10.8+ 32/64 bits.
-* v11 is for v11 and above, Windows 32/64 bits, OS X 10.6+ 32 bits (Intel only)
-
-Dependencies
----
-
-**Mac OS X**
-
-* libcurl/7.40.0
-* OpenSSL/1.0.1j 
-* zlib/1.2.8 
-* libidn/1.29 
-* libssh2/1.4.3
- 
-**Windows**
-
-* libcurl/7.40.0
-* OpenSSL/1.0.1j
-* zlib/1.2.8
-* libidn/1.29
-* libssh2/1.4.3
-
 |Protocol|Mac OS X|Windows|
 |:-------:|:-:|:-----:|
 |dict|◯|◯|
