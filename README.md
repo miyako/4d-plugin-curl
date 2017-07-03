@@ -11,52 +11,6 @@
 
 <img src="https://cloud.githubusercontent.com/assets/1725068/18940649/21945000-8645-11e6-86ed-4a0f800e5a73.png" width="32" height="32" /> <img src="https://cloud.githubusercontent.com/assets/1725068/18940648/2192ddba-8645-11e6-864d-6d5692d55717.png" width="32" height="32" />
 
-### New!
-
-A new 6th parameter has been added to return more information (HTTP status, etc).
-
-The following options are returned:
-
-```
-conditionUnmet
-contentLengthUpload
-rtspClientCseq
-rtspServerCseq
-rtspCseqRecv
-lastSocket
-primaryPort
-localPort
-contentLengthDownload
-connectCode
-fileTime
-totalTime
-requestSize
-headerSize
-speedUpload
-speedDownload
-sizeDownload
-sizeUpload
-httpAuthAvail
-proxyAuthAvail
-osErrNo
-numConnects
-responseCode
-nameLookupTime
-connectTime
-appConnectTime
-preTransferTime
-startTransferTime
-redirectTime
-sslVerifyResult
-redirectCount
-effectiveUrl
-localIp
-contentType
-primaryIp
-redirectUrl
-ftpEntryPath
-rtspSessionId
-```
 
 A new array based function has been added to process multiple URLs.
 
@@ -497,3 +451,50 @@ On Mac, SSH2 is linked to the system OpenSSL located at /usr/lib/, not the one e
 On Windows, OPENSSL (LIBEAY and LIBSSL) and LIBSSH2 are statically linked to LIBCURL, to avoid collision with the DLL included in 4D itself.
 
 LIBCURL is modified so that it will yield to 4D during a long operation (easy.c).
+
+### New!
+
+A new 6th parameter has been added to return more information (HTTP status, etc).
+
+The following options are returned:
+
+```
+conditionUnmet
+contentLengthUpload
+rtspClientCseq
+rtspServerCseq
+rtspCseqRecv
+lastSocket
+primaryPort
+localPort
+contentLengthDownload
+connectCode
+fileTime
+totalTime
+requestSize
+headerSize
+speedUpload
+speedDownload
+sizeDownload
+sizeUpload
+httpAuthAvail
+proxyAuthAvail
+osErrNo
+numConnects
+responseCode
+nameLookupTime
+connectTime
+appConnectTime
+preTransferTime
+startTransferTime
+redirectTime
+sslVerifyResult
+redirectCount
+effectiveUrl
+localIp
+contentType
+primaryIp
+redirectUrl
+ftpEntryPath
+rtspSessionId
+```
