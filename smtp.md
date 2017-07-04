@@ -3,9 +3,9 @@
 It is necessary to set ``CURLOPT_UPLOAD`` to sending mails
 
 ```
-$t_Mail:="To: keisuke <keisuke.miyako@4d.com\r\n"+\
+$t_Mail:="To: keisuke <keisuke.miyako@4d.com>\r\n"+\
 "Cc: keisuke <keisuke.miyako@i.softbank.jp>\r\n"+\
-"From: test <test@heintz.net>\r\n"+\
+"From: me <keisuke.miyako@4d.com>\r\n"+\
 "Message-ID: <"+Generate UUID+"@4d.com>\r\n"+\
 "Subject: SMTP example message\r\n"+\
 "\r\n"+\
