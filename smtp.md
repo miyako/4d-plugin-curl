@@ -3,7 +3,7 @@
 It is necessary to set ``CURLOPT_UPLOAD`` to sending mails
 
 ```
-$t_Mail:="To: keisuke <keisuke.miyako@4d.com>\r\n"+\
+$mime:="To: keisuke <keisuke.miyako@4d.com>\r\n"+\
 "Cc: keisuke <keisuke.miyako@i.softbank.jp>\r\n"+\
 "From: me <keisuke.miyako@4d.com>\r\n"+\
 "Message-ID: <"+Generate UUID+"@4d.com>\r\n"+\
@@ -16,7 +16,7 @@ C_LONGINT($err)
 ARRAY LONGINT($optionNames;0)
 ARRAY TEXT($optionValues;0)
 
-TEXT TO BLOB($t_Mail;$in;UTF8 text without length)
+TEXT TO BLOB($mime;$in;UTF8 text without length)
 
 APPEND TO ARRAY($optionNames;CURLOPT_MAIL_FROM)
 APPEND TO ARRAY($optionValues;"keisuke.miyako@4d.com")
