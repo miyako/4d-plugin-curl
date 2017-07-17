@@ -60,9 +60,9 @@
 		D14AAF161A7223A400C70BBC /* libssh2.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D14AAF0E1A7223A400C70BBC /* libssh2.1.dylib */; };
 		D14AAF171A7223A400C70BBC /* libssl.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D14AAF0F1A7223A400C70BBC /* libssl.1.0.0.dylib */; };
 		D14AAF181A7223A400C70BBC /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D14AAF101A7223A400C70BBC /* libz.1.dylib */; };
+		D15FB4801F1D643600AAA955 /* libjson.7.6.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D15FB47F1F1D643600AAA955 /* libjson.7.6.1.dylib */; };
 		D1622EFF1BF0345100614CCF /* curl.h in Headers */ = {isa = PBXBuildFile; fileRef = D1622EFE1BF0345100614CCF /* curl.h */; };
 		D175D9CD1A02E8DD0006B569 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D175D9CC1A02E8DD0006B569 /* CoreGraphics.framework */; };
-		D1EA5D191F0A32CA00D19C60 /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EA5D181F0A32CA00D19C60 /* libjson.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -135,9 +135,9 @@
 		D14AAF0F1A7223A400C70BBC /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = cURL.4dbase/Plugins/cURL.bundle/Contents/MacOS/libssl.1.0.0.dylib; sourceTree = "<group>"; };
 		D14AAF101A7223A400C70BBC /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = cURL.4dbase/Plugins/cURL.bundle/Contents/MacOS/libz.1.dylib; sourceTree = "<group>"; };
 		D14D10DD1A03A8A5008B3411 /* constants.xlf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = constants.xlf; sourceTree = "<group>"; };
+		D15FB47F1F1D643600AAA955 /* libjson.7.6.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjson.7.6.1.dylib; path = cURL.4dbase/Plugins/cURL.bundle/Contents/MacOS/libjson.7.6.1.dylib; sourceTree = "<group>"; };
 		D1622EFE1BF0345100614CCF /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curl.h; path = include/curl/curl.h; sourceTree = "<group>"; };
 		D175D9CC1A02E8DD0006B569 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D1EA5D181F0A32CA00D19C60 /* libjson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjson.a; path = stdc/a/libjson.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,10 +147,10 @@
 			files = (
 				D14AAF111A7223A400C70BBC /* libcrypto.1.0.0.dylib in Frameworks */,
 				D14AAF121A7223A400C70BBC /* libcurl.4.dylib in Frameworks */,
+				D15FB4801F1D643600AAA955 /* libjson.7.6.1.dylib in Frameworks */,
 				D14AAF131A7223A400C70BBC /* libiconv.2.dylib in Frameworks */,
 				D14AAF141A7223A400C70BBC /* libidn.11.dylib in Frameworks */,
 				D14AAF151A7223A400C70BBC /* libintl.8.dylib in Frameworks */,
-				D1EA5D191F0A32CA00D19C60 /* libjson.a in Frameworks */,
 				D14AAF161A7223A400C70BBC /* libssh2.1.dylib in Frameworks */,
 				D14AAF171A7223A400C70BBC /* libssl.1.0.0.dylib in Frameworks */,
 				D14AAF181A7223A400C70BBC /* libz.1.dylib in Frameworks */,
@@ -178,6 +178,7 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D15FB47F1F1D643600AAA955 /* libjson.7.6.1.dylib */,
 				D14AAF091A7223A400C70BBC /* libcrypto.1.0.0.dylib */,
 				D14AAF0A1A7223A400C70BBC /* libcurl.4.dylib */,
 				D14AAF0B1A7223A400C70BBC /* libiconv.2.dylib */,
@@ -186,7 +187,6 @@
 				D14AAF0E1A7223A400C70BBC /* libssh2.1.dylib */,
 				D14AAF0F1A7223A400C70BBC /* libssl.1.0.0.dylib */,
 				D14AAF101A7223A400C70BBC /* libz.1.dylib */,
-				D1EA5D181F0A32CA00D19C60 /* libjson.a */,
 				D13116C61A03B5B600DE1322 /* AppKit.framework */,
 				D175D9CC1A02E8DD0006B569 /* CoreGraphics.framework */,
 				D130064E12F02D9700702C0E /* Cocoa.framework */,

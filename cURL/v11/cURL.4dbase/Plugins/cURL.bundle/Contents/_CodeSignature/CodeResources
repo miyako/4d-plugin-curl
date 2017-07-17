@@ -112,15 +112,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>MacOS/cURL.html</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			A5wYbzNG5I898hw26X6IcjexyXg=
-			</data>
-			<key>requirement</key>
-			<string>identifier cURL and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
-		</dict>
 		<key>MacOS/curl</key>
 		<dict>
 			<key>cdhash</key>
@@ -174,6 +165,15 @@
 			</data>
 			<key>requirement</key>
 			<string>identifier "libintl.8" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
+		</dict>
+		<key>MacOS/libjson.7.6.1.dylib</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			nfVCjsrIP/N764q2fckttXIS+CA=
+			</data>
+			<key>requirement</key>
+			<string>identifier "libjson.7" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
 		</dict>
 		<key>MacOS/libssh2.1.dylib</key>
 		<dict>
