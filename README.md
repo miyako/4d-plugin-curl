@@ -25,7 +25,7 @@ values|ARRAY TEXT|Option values (in)
 in|BLOB|Request data (in)
 out|BLOB|Response data (out)
 info|TEXT|Information in JSON (out)
-error|LONGINT|Error code
+error|LONGINT|[Error code](https://curl.haxx.se/libcurl/c/libcurl-errors.html)
 
 ```
 cURL ARRAY (url;names;values;in;out;info;error)
@@ -39,7 +39,7 @@ values|ARRAY TEXT|Option values (in)
 in|ARRAY BLOB|Request data (in)
 out|ARRAY BLOB|Response data (out)
 info|ARRAY TEXT|Information in JSON (out)
-error|ARRAY LONGINT|Error code (out)
+error|ARRAY LONGINT|[Error code](https://curl.haxx.se/libcurl/c/libcurl-errors.html)
 
 **Note**: The following options are not support with cURL ARRAY:
 
